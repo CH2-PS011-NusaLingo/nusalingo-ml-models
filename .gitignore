@@ -1,5 +1,5 @@
 venv/
 temp/
-test_sunda/
 __pycache__/
-
+key.json
+Sunda/test_sunda
