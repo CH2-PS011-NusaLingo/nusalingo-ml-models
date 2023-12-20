@@ -1,0 +1,5 @@
+venv/
+temp/
+test_sunda/
+__pycache__/
+

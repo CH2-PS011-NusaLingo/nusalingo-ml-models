@@ -7,7 +7,7 @@ from transform import preprocess_audiobuffer
 
 
 # Mengambil Model yang dibutuhkan
-loaded_model = models.load_model("sunda_coba1.h5")
+loaded_model = models.load_model("sunda/sunda_coba1.h5")
 
 # Lbael yang kami miliki
 sundas = ['abdi', 'angkat', 'anjeun', 'bingung', 'bungah', 'dimana', 'dongkap', 'hoyong',
@@ -16,8 +16,8 @@ sundas = ['abdi', 'angkat', 'anjeun', 'bingung', 'bungah', 'dimana', 'dongkap', 
 
 
 # Membuat prediksi output
-def predict_output():
-    audio = voice_input("test_sunda/pangaos_test1.wav")
+def predict_output_sunda(tempFileName):
+    audio = voice_input(tempFileName)
     spec = preprocess_audiobuffer(audio)
     prediction = loaded_model(spec)
     label_pred = np.argmax(prediction, axis=1)
@@ -30,10 +30,10 @@ def predict_output():
 
 if __name__ == "__main__":
     while True:
-        sunda, final_y = predict_output()
+        sunda, final_y = predict_output_sunda()
         print(f"Predicted label: {sunda} with probabilities: {final_y}")
         # ... Further processing with probabilities (optional) ...
         break
-        # output = predict_output()
+        # output = predict_output_sunda()
         # if output == output :
         #     break
