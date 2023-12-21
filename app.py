@@ -76,4 +76,4 @@ if __name__ == '__main__':
         output, percentage = sundaPredictionModule()
         print("%s %.5f%%" % (output, percentage))
         break"""
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0')

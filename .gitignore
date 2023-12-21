@@ -2,4 +2,4 @@ venv/
 temp/
 __pycache__/
 key.json
-Sunda/test_sunda
+test_sunda/

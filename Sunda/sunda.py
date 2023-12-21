@@ -7,7 +7,7 @@ from transform import preprocess_audiobuffer
 
 
 # Mengambil Model yang dibutuhkan
-loaded_model = models.load_model("sunda/sunda_coba1.h5")
+loaded_model = models.load_model("Sunda/sunda_coba1.h5")
 
 # Lbael yang kami miliki
 sundas = ['abdi', 'angkat', 'anjeun', 'bingung', 'bungah', 'dimana', 'dongkap', 'hoyong',
