@@ -40,19 +40,13 @@ def sundaPredictionModule(filename):
     download_wav_from_gcs(bucket_name, filename, destination_folder)
 
     #using the ml model to predict the output
-    sunda, final_y = predict_output_sunda("temp/test.wav")
-
-    #converting the result to a percentage
-    try:
-        percentage = float(f"{final_y}")*100
-    except:
-        percentage = 0
+    sunda, final_y = predict_output_sunda("temp/"+filename)
 
     #deleting the temporary file
     os.remove('temp/'+filename)
 
     #return the percentage and classification result
-    return sunda, percentage
+    return sunda, (f"{final_y}")
 
 
 #GET and POST functions for '/sundapredict'
@@ -64,13 +58,14 @@ def sundaApi():
         #request and response if not error
         try:
             filename = request.json['filename']
-            classification, percentage = sundaPredictionModule(filename)
+            classification, percentage = sundaPredictionModule(filename)        
+
         #error handling, returning 400 as status code and error message
         except Exception:
-            respond = jsonify({'message': 'Error'})
+            respond = jsonify({'message': 'Error File Not Found or Model Error'})
             respond.status_code = 400
             return respond
-        
+
         #building the result.json file
         result = {
             "classification": classification,

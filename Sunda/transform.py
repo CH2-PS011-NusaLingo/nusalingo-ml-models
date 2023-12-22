@@ -1,3 +1,5 @@
+# File : transform.py
+
 import numpy as np
 import tensorflow as tf
 
@@ -31,26 +33,6 @@ def get_spectrogram(waveform):
     return spectrogram
 
 
-# def preprocess_audiobuffer(waveform):
-#     """
-#     waveform: ndarray of size (16000, )
-#     
-#     output: Spectogram Tensor of size: (1, `height`, `width`, `channels`)
-#     """
-#     #  normalize from [-32768, 32767] to [-1, 1]
-#     waveform = tf.math.divide_no_nan(waveform, 32768.0)
-#     # waveform =  waveform / 32768
-# 
-#     waveform = tf.convert_to_tensor(waveform, dtype=tf.float32)
-# 
-#     spectogram = get_spectrogram(waveform)
-#     
-#     # add one dimension
-#     spectogram = tf.expand_dims(spectogram, 0)
-#     
-#     return spectogram
-
-
 def preprocess_audiobuffer(waveform):
     """
     waveform: ndarray of size (16000, )
@@ -66,5 +48,6 @@ def preprocess_audiobuffer(waveform):
     
     # add one dimension
     spectogram = tf.expand_dims(spectogram, 0)
+
     
     return spectogram
